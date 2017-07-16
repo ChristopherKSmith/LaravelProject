@@ -20,6 +20,8 @@
     <th>Category</th>
     <th>Title</th>
     <th>Body</th>
+    <th>View Post</th>
+    <th>Comments</th>
     <th>Created</th>
     <th>Updated</th>
   </tr>
@@ -34,6 +36,8 @@
   	    <td> {{$post->category ? $post->category->name : 'Uncategorized'}} </td>
         <td> {{$post->title}} </td>
         <td> {{str_limit($post->body,30)}} </td>
+        <td><a href="{{route('home.post', $post->id)}}">View Post</a></td>
+        <td><a href="{{route('comments.show', $post->id)}}">View Comments</a></td>
         <td> {{$post->created_at->diffForhumans()}} </td>
         <td> {{$post->updated_at->diffForhumans()}} </td>
   	  </tr>

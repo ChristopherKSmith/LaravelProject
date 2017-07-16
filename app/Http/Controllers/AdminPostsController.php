@@ -144,4 +144,12 @@ class AdminPostsController extends Controller
             
         }
     }
+//Not Located in the Admin Directory
+    public function post($id){
+        $post = Post::findOrFail($id);
+
+        $comments = $post->comments()->whereIsActive(1)->get();
+
+        return view('post', compact('post', 'comments'));
+    }
 }
